@@ -11,10 +11,19 @@ export default function SearchInput({
 	return (
 		<div className="relative flex items-center">
 			<Search
-				className={cn("size-6 absolute text-header/50 left-3", props["aria-invalid"] && "text-destructive/70")}
+				className={cn(
+					"size-6 absolute text-header/50 left-3",
+					props["aria-invalid"] && "text-destructive/70",
+				)}
 			/>
-			<Input placeholder={"search"} className={cn("pl-12 pr-10", className)} {...props} />
-			{isSearching && <Loader className="size-4 text-primary/40 absolute animate-spin right-7" />}
+			<Input
+				placeholder={"search"}
+				className={cn("pl-12 pr-10", className)}
+				{...props}
+			/>
+			{isSearching && (
+				<Loader className="size-4 text-primary/40 absolute animate-spin right-7" />
+			)}
 		</div>
 	);
 }

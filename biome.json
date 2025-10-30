@@ -49,7 +49,7 @@
 			},
 			"suspicious": {
 				"noConsole": "error",
-				"noExplicitAny": "warn"
+				"noExplicitAny": "off"
 			}
 		}
 	},

@@ -17,19 +17,36 @@ export default function PasswordInput({
 				variant={"link"}
 				className="absolute right-2"
 				onClick={() => {
-					setInputType(inputType === "password" ? "text" : "password");
+					setInputType(
+						inputType === "password" ? "text" : "password",
+					);
 				}}
 			>
 				{inputType !== "password" ? (
 					<EyeClosed
-						className={cn("size-4  text-header/50", props["aria-invalid"] && "text-destructive/70")}
+						className={cn(
+							"size-4  text-header/50",
+							props["aria-invalid"] && "text-destructive/70",
+						)}
 					/>
 				) : (
-					<Eye className={cn("size-4 text-header/50", props["aria-invalid"] && "text-destructive/70")} />
+					<Eye
+						className={cn(
+							"size-4 text-header/50",
+							props["aria-invalid"] && "text-destructive/70",
+						)}
+					/>
 				)}
 			</Button>
-			<Input placeholder={"***************"} className={cn("pr-10", className)} type={inputType} {...props} />
-			{isSearching && <Loader className="size-4 text-primary/40 absolute animate-spin right-7" />}
+			<Input
+				placeholder={"***************"}
+				className={cn("pr-10", className)}
+				type={inputType}
+				{...props}
+			/>
+			{isSearching && (
+				<Loader className="size-4 text-primary/40 absolute animate-spin right-7" />
+			)}
 		</div>
 	);
 }

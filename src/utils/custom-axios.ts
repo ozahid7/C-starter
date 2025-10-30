@@ -1,7 +1,15 @@
-import axios, { AxiosError, type AxiosInstance, type AxiosResponse } from "axios";
+import axios, {
+	AxiosError,
+	type AxiosInstance,
+	type AxiosResponse,
+} from "axios";
 import { Navigate } from "react-router";
 import { toast } from "sonner";
-import type { ApiError, ApiResponse, RefreshTokenResponse } from "@/types/axios";
+import type {
+	ApiError,
+	ApiResponse,
+	RefreshTokenResponse,
+} from "@/types/axios";
 
 const base_url = `${import.meta.env.VITE_B_URL}`;
 const api: AxiosInstance = axios.create({

@@ -5,7 +5,11 @@ import { io, type Socket } from "socket.io-client";
 const socketContext = createContext<Socket | null>(null);
 
 const SOCKET_URL = import.meta.env.VITE_B_URL;
-export default function SocketIoProvider({ children }: { children: React.ReactNode }) {
+export default function SocketIoProvider({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	const [globalSocket, setGlobalSocket] = useState<Socket | null>(null);
 
 	useEffect(() => {
@@ -25,7 +29,12 @@ export default function SocketIoProvider({ children }: { children: React.ReactNo
 			globalSocket?.disconnect();
 		};
 	}, [globalSocket]);
-	if (globalSocket) return <socketContext.Provider value={globalSocket}>{children}</socketContext.Provider>;
+	if (globalSocket)
+		return (
+			<socketContext.Provider value={globalSocket}>
+				{children}
+			</socketContext.Provider>
+		);
 }
 
 export const useSocket = () => {

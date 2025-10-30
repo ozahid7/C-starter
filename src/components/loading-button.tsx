@@ -14,7 +14,11 @@ export default function LoadingButton({
 	className?: string;
 }) {
 	return (
-		<Button className={cn("min-w-24", className)} disabled={isLoading} {...props}>
+		<Button
+			className={cn("min-w-24", className)}
+			disabled={isLoading}
+			{...props}
+		>
 			{isLoading ? <Loader className="animate-spin" /> : children}
 		</Button>
 	);

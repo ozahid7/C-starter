@@ -1,4 +1,10 @@
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
+import {
+	createContext,
+	type ReactNode,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 
 const windowResizeContext = createContext<{
 	isMobile: boolean;
@@ -22,11 +28,17 @@ export default function WindowResize({ children }: { children: ReactNode }) {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
-	return <windowResizeContext.Provider value={{ isMobile, isTablet }}>{children}</windowResizeContext.Provider>;
+	return (
+		<windowResizeContext.Provider value={{ isMobile, isTablet }}>
+			{children}
+		</windowResizeContext.Provider>
+	);
 }
 
 export function useBreakPoint() {
 	const breakPoint = useContext(windowResizeContext);
 	if (breakPoint) return breakPoint;
-	throw new Error("useBreakPoint must be used within a WindowResize provider");
+	throw new Error(
+		"useBreakPoint must be used within a WindowResize provider",
+	);
 }
