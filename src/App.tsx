@@ -2,9 +2,9 @@ import PasswordInput from "./components/password-input";
 
 function App() {
 	return (
-		<div className="text- size-96 ">
+		<div className=" ">
 			<PasswordInput />
-			Click on the Vite and React logos to learn more
+			{/* Click on the Vite and React logos to learn more */}
 		</div>
 	);
 }

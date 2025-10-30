@@ -11,7 +11,7 @@ export default function PasswordInput({
 }: ComponentProps<"input"> & { className?: string; isSearching?: boolean }) {
 	const [inputType, setInputType] = useState("password");
 	return (
-		<div className="relative flex items-center">
+		<div className="relative w-full flex items-center">
 			<Button
 				size={"icon-sm"}
 				variant={"link"}
