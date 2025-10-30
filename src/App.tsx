@@ -1,11 +1,11 @@
-import './App.css';
+import PasswordInput from "./components/password-input";
 
 function App() {
-	const _logoLink = 'https://vitejs.dev/';
 	return (
-		<>
-			<p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-		</>
+		<div className="text- size-96 ">
+			<PasswordInput />
+			Click on the Vite and React logos to learn more
+		</div>
 	);
 }
 

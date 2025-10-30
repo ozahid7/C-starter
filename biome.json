@@ -18,7 +18,7 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": false,
+			"recommended": true,
 			"correctness": {
 				"noUnusedFunctionParameters": "error",
 				"noUnusedImports": {
@@ -28,8 +28,10 @@
 				},
 				"noUnusedVariables": {
 					"level": "error",
-					"fix": "safe",
-					"options": {}
+					"fix": "none",
+					"options": {
+						"ignoreRestSiblings": true
+					}
 				},
 				"useHookAtTopLevel": "error",
 				"noNestedComponentDefinitions": "error",
@@ -38,23 +40,26 @@
 				"noRenderReturnValue": "error"
 			},
 			"style": {
-				"useReactFunctionComponents": "error"
+				"useReactFunctionComponents": "error",
+				"useTemplate": "off"
 			},
+
 			"nursery": {
 				"noReactForwardRef": "error"
 			},
 			"suspicious": {
-				"noConsole": "error"
+				"noConsole": "error",
+				"noExplicitAny": "warn"
 			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "single",
+			"quoteStyle": "double",
 			"arrowParentheses": "always",
 			"bracketSameLine": false,
 			"bracketSpacing": true,
-			"jsxQuoteStyle": "single",
+			"jsxQuoteStyle": "double",
 			"quoteProperties": "asNeeded",
 			"semicolons": "always",
 			"trailingCommas": "all"
