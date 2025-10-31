@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+routeTree.gen.ts
+
+.tanstack
 
 node_modules
 build
