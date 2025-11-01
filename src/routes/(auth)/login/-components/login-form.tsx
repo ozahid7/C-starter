@@ -3,7 +3,6 @@ import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import * as z from "zod"
 
-import { Button } from "@/components/ui/button"
 import {
 	Card,
 	CardContent,
@@ -20,6 +19,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import PasswordInput from "@/components/password-input"
+import LoadingButton from "@/components/loading-button"
 
 const formSchema = z.object({
 	password: z
@@ -37,7 +37,7 @@ const formSchema = z.object({
 	email: z.email("Invalid email address."),
 })
 
-type LoginFormType = z.infer<typeof formSchema>
+export type LoginFormType = z.infer<typeof formSchema>
 
 export function LoginForm() {
 	const form = useForm<LoginFormType>({
@@ -48,21 +48,8 @@ export function LoginForm() {
 		},
 	})
 
-	function onSubmit(data: LoginFormType) {
-		toast.success("You submitted the following values:", {
-			description: (
-				<pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-					<code>{JSON.stringify(data, null, 2)}</code>
-				</pre>
-			),
-			position: "bottom-right",
-			classNames: {
-				content: "flex flex-col gap-2",
-			},
-			style: {
-				"--border-radius": "calc(var(--radius)  + 4px)",
-			} as React.CSSProperties,
-		})
+	const onSubmit = async (data: LoginFormType) => {
+		toast.success("Logged in successfully!")
 	}
 
 	return (
@@ -125,16 +112,13 @@ export function LoginForm() {
 			</CardContent>
 			<CardFooter>
 				<Field orientation="horizontal" className="justify-end gap-2">
-					<Button
-						type="button"
-						variant="outline"
-						onClick={() => form.reset()}
+					<LoadingButton
+						isLoading={form.formState.isSubmitting}
+						form="login-form"
+						type="submit"
 					>
-						Reset
-					</Button>
-					<Button form="login-form" type="submit">
 						Login
-					</Button>
+					</LoadingButton>
 				</Field>
 			</CardFooter>
 		</Card>

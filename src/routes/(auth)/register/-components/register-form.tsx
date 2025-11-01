@@ -20,6 +20,9 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import PasswordInput from "@/components/password-input"
+import LoadingButton from "@/components/loading-button"
+import { usePostLogin } from "@/api/post-login"
+import { usePostRegister } from "@/api/post-register"
 
 const formSchema = z
 	.object({
@@ -45,7 +48,7 @@ const formSchema = z
 		path: ["confirmPassword"],
 	})
 
-type RegisterFormType = z.infer<typeof formSchema>
+export type RegisterFormType = z.infer<typeof formSchema>
 
 export function RegisterForm() {
 	const form = useForm<RegisterFormType>({
@@ -57,21 +60,19 @@ export function RegisterForm() {
 		},
 	})
 
-	function onSubmit(data: RegisterFormType) {
-		toast.success("You submitted the following values:", {
-			description: (
-				<pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-					<code>{JSON.stringify(data, null, 2)}</code>
-				</pre>
-			),
-			position: "bottom-right",
-			classNames: {
-				content: "flex flex-col gap-2",
-			},
-			style: {
-				"--border-radius": "calc(var(--radius)  + 4px)",
-			} as React.CSSProperties,
-		})
+	const { mutateAsync: register } = usePostRegister()
+
+	const onSubmit = async (data: RegisterFormType) => {
+		await register(data)
+			.then(() => {
+				toast.success("Registration successful! You can now log in.")
+			})
+			.catch((error) => {
+				toast.error(
+					error.response?.data?.errorDetails?.message ||
+						"An error occurred during registration."
+				)
+			})
 	}
 
 	return (
@@ -157,16 +158,13 @@ export function RegisterForm() {
 			</CardContent>
 			<CardFooter>
 				<Field orientation="horizontal" className="justify-end gap-2">
-					<Button
-						type="button"
-						variant="outline"
-						onClick={() => form.reset()}
+					<LoadingButton
+						isLoading={form.formState.isSubmitting}
+						form="register-form"
+						type="submit"
 					>
-						Reset
-					</Button>
-					<Button form="register-form" type="submit">
 						Register
-					</Button>
+					</LoadingButton>
 				</Field>
 			</CardFooter>
 		</Card>
