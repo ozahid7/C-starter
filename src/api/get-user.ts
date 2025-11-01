@@ -1,19 +1,17 @@
-import { useQuery } from "@tanstack/react-query"
-import { AxiosError } from "axios"
-import Caxios from "../utils/custom-axios"
+import { type UseQueryResult, useQuery } from "@tanstack/react-query";
+import type { AxiosError } from "axios";
+import Caxios from "../utils/custom-axios";
 
-export const useUser = () => {
-	async function getUser() {
-		try {
-			const response = await Caxios<any>("get", "/api/auth/me")
-			return response
-		} catch (error) {
-			if (error instanceof AxiosError) {
-				throw error
-			}
-		}
-		return null
-	}
+type UserDetails = {
+	id: string;
+	name: string;
+	email: string;
+};
+const getUser = async (): Promise<UserDetails> => {
+	const response = await Caxios<UserDetails>("get", "/api/auth/me");
+	return response;
+};
 
-	return useQuery({ queryKey: ["user-me"], queryFn: getUser, retry: false })
-}
+export const useUser = (): UseQueryResult<UserDetails, AxiosError> => {
+	return useQuery({ queryKey: ["user"], queryFn: getUser, retry: false });
+};

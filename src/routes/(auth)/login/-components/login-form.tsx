@@ -1,6 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import * as z from "zod";
 import { useLogin } from "@/api/post-login";
 import FormInput from "@/components/form-input";
@@ -46,13 +45,7 @@ export function LoginForm() {
 	const { mutateAsync: login } = useLogin();
 
 	const onSubmit = async (data: LoginFormType) => {
-		await login(data)
-			.then(() => {
-				toast.success("Login successful!");
-			})
-			.catch((_error) => {
-				toast.error("Login failed. Please try again.");
-			});
+		await login(data);
 	};
 
 	return (

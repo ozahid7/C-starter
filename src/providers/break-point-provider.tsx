@@ -1,10 +1,10 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export default function BreakPoints() {
 	const badgeStyle =
-		"absolute bottom-2 size-6 lg:bottom-4 right-2 lg:right-4 bg-black chv text-white p-2 border-2 border-white rounded-full h-full w-full font-semibold"
+		"absolute bottom-2 lg:bottom-4 right-2 lg:right-4 bg-foreground text-background chv text-sm  p-4 border-2 border-muted-foreground rounded-full h-full w-full font-semibold";
 	if (import.meta.env.PROD) {
-		return null
+		return null;
 	}
 	return (
 		<div className="absolute bottom-10 size-10 right-10">
@@ -27,5 +27,5 @@ export default function BreakPoints() {
 				2XL
 			</div>
 		</div>
-	)
+	);
 }

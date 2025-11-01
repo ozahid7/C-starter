@@ -1,29 +1,31 @@
+import { useNavigate } from "@tanstack/react-router";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
 import { useUser } from "@/api/get-user";
+import CustomLoader from "@/components/custom-loader";
 
 const userContext = React.createContext<{ user: any } | null>(null);
 
-export default function UserProvider({
+export default function AuthProvider({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const { data, isLoading } = useUser();
+	const { data: user, isLoading } = useUser();
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (!data && !isLoading) navigate("");
-	}, [data, isLoading, navigate]);
+		if (!user && !isLoading) navigate({ to: "/login", replace: true });
+	}, [user, isLoading, navigate]);
 
 	if (isLoading)
 		return (
-			<div className="min-h-[700px] items-center justify-center flex"></div>
+			<div className=" flex-1 items-center justify-center flex">
+				<CustomLoader />
+			</div>
 		);
 
-	if (!data) return null;
+	if (!user) return null;
 
-	const { data: user } = data;
 	return (
 		<userContext.Provider value={{ user }}>{children}</userContext.Provider>
 	);

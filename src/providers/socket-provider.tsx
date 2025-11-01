@@ -21,9 +21,7 @@ export default function SocketIoProvider({
 						transports: ["websocket"],
 					}),
 				);
-			} catch (error) {
-				void error;
-			}
+			} catch (_error) {}
 		}
 		return () => {
 			globalSocket?.disconnect();
