@@ -2,8 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import Caxios from "@/utils/custom-axios";
 
-export const usePostLogout = () => {
-	async function PostLogout() {
+export const useLogout = () => {
+	async function postLogout() {
 		try {
 			await Caxios("get", `/api/auth/logout`);
 		} catch (e) {
@@ -16,6 +16,6 @@ export const usePostLogout = () => {
 
 	return useMutation({
 		mutationKey: ["post-logout"],
-		mutationFn: PostLogout,
+		mutationFn: postLogout,
 	});
 };

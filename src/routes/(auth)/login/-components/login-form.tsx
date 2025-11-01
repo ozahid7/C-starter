@@ -1,8 +1,10 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
-
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import * as z from "zod";
+import { useLogin } from "@/api/post-login";
+import FormInput from "@/components/form-input";
+import LoadingButton from "@/components/loading-button";
 import {
 	Card,
 	CardContent,
@@ -10,16 +12,9 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
-import {
-	Field,
-	FieldError,
-	FieldGroup,
-	FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import PasswordInput from "@/components/password-input"
-import LoadingButton from "@/components/loading-button"
+} from "@/components/ui/card";
+import { Field, FieldGroup } from "@/components/ui/field";
+import { Form } from "@/components/ui/form";
 
 const formSchema = z.object({
 	password: z
@@ -35,9 +30,9 @@ const formSchema = z.object({
 			message: "Password must contain at least one number",
 		}),
 	email: z.email("Invalid email address."),
-})
+});
 
-export type LoginFormType = z.infer<typeof formSchema>
+export type LoginFormType = z.infer<typeof formSchema>;
 
 export function LoginForm() {
 	const form = useForm<LoginFormType>({
@@ -46,69 +41,49 @@ export function LoginForm() {
 			email: "",
 			password: "",
 		},
-	})
+	});
+
+	const { mutateAsync: login } = useLogin();
 
 	const onSubmit = async (data: LoginFormType) => {
-		toast.success("Logged in successfully!")
-	}
+		await login(data)
+			.then(() => {
+				toast.success("Login successful!");
+			})
+			.catch((_error) => {
+				toast.error("Login failed. Please try again.");
+			});
+	};
 
 	return (
 		<Card className="w-full sm:max-w-md">
-			<CardHeader>
-				<CardTitle>Login</CardTitle>
+			<CardHeader className="text-center space-y-2">
+				<CardTitle className="text-2xl">Login</CardTitle>
 				<CardDescription>
 					Enter your email and password to sign in to yours account.
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
-					<FieldGroup>
-						<Controller
-							name="email"
-							control={form.control}
-							render={({ field, fieldState }) => (
-								<Field data-invalid={fieldState.invalid}>
-									<FieldLabel htmlFor="login-email-input">
-										Email
-									</FieldLabel>
-									<Input
-										{...field}
-										id="login-email-input"
-										aria-invalid={fieldState.invalid}
-										placeholder="example@email.com"
-									/>
-									{fieldState.invalid && (
-										<FieldError
-											errors={[fieldState.error]}
-										/>
-									)}
-								</Field>
-							)}
-						/>
-						<Controller
-							name="password"
-							control={form.control}
-							render={({ field, fieldState }) => (
-								<Field data-invalid={fieldState.invalid}>
-									<FieldLabel htmlFor="login-password-input">
-										Password
-									</FieldLabel>
-									<PasswordInput
-										{...field}
-										id="login-password-input"
-										aria-invalid={fieldState.invalid}
-										placeholder="*********"
-									/>
-									{fieldState.invalid && (
-										<FieldError
-											errors={[fieldState.error]}
-										/>
-									)}
-								</Field>
-							)}
-						/>
-					</FieldGroup>
-				</form>
+				<Form {...form}>
+					<form
+						id="login-form"
+						onSubmit={form.handleSubmit(onSubmit)}
+					>
+						<FieldGroup>
+							<FormInput
+								name="email"
+								id="login-email-input"
+								placeholder="example@email.com"
+							/>
+							<FormInput
+								name="password"
+								id="login-password-input"
+								type="password"
+								placeholder="Your password"
+							/>
+						</FieldGroup>
+					</form>
+				</Form>
 			</CardContent>
 			<CardFooter>
 				<Field orientation="horizontal" className="justify-end gap-2">
@@ -122,5 +97,5 @@ export function LoginForm() {
 				</Field>
 			</CardFooter>
 		</Card>
-	)
+	);
 }
