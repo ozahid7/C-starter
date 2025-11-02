@@ -6,7 +6,7 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export default function CustomTooltip({
+export default function CTooltip({
 	children,
 	message,
 	...rest

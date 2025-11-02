@@ -8,24 +8,25 @@ export default function BreakPoints() {
 	}
 	return (
 		<div className="absolute bottom-10 size-10 right-10">
-			<div className={cn("sm:hidden bg-black flex " + badgeStyle)}>
+			<span className={cn("sm:hidden bg-black flex " + badgeStyle)}>
 				XS
-			</div>
-			<div className={cn("hidden sm:flex md:hidden " + badgeStyle)}>
+			</span>
+			<span className={cn("hidden sm:flex md:hidden " + badgeStyle)}>
 				SM
-			</div>
-			<div className={cn("hidden md:flex lg:hidden " + badgeStyle)}>
+			</span>
+			<span className={cn("hidden md:flex lg:hidden " + badgeStyle)}>
 				MD
-			</div>
-			<div className={cn("hidden lg:flex xl:hidden " + badgeStyle)}>
+			</span>
+			<span className={cn("hidden lg:flex xl:hidden " + badgeStyle)}>
 				LG
-			</div>
-			<div className={cn("hidden 2xl:hidden xl:flex " + badgeStyle)}>
+			</span>
+			<span className={cn("hidden 2xl:hidden xl:flex " + badgeStyle)}>
 				XL
-			</div>
-			<div className={cn("hidden 2xl:flex 3xl:hidden " + badgeStyle)}>
+			</span>
+			<span className={cn("hidden 2xl:flex 3xl:hidden " + badgeStyle)}>
 				2XL
-			</div>
+			</span>
+			<span className={cn("hidden 3xl:flex" + badgeStyle)}>{"+3XL"}</span>
 		</div>
 	);
 }

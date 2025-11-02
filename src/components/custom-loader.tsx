@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export default function CustomLoader({ className }: { className?: string }) {
+export default function CLoader({ className }: { className?: string }) {
 	return (
 		<span
 			className={cn(

@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import { useUser } from "@/api/get-user";
-import CustomLoader from "@/components/custom-loader";
+import CLoader from "@/components/custom-loader";
 
 const userContext = React.createContext<{ user: any } | null>(null);
 
@@ -20,7 +20,7 @@ export default function AuthProvider({
 	if (isLoading)
 		return (
 			<div className=" flex-1 items-center justify-center flex">
-				<CustomLoader />
+				<CLoader />
 			</div>
 		);
 

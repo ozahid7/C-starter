@@ -9,13 +9,13 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
 	return (
-		<div className="flex-1 flex max-w-7xl mx-auto w-full flex-col">
+		<div className="flex-1 shadow flex max-w-7xl bg-soft-background mx-auto w-full flex-col">
 			<NavBar />
-			<section className="flex-1 gap-4 flex items-center justify-center flex-col chv">
-				<h1 className="sm:text-5xl text-2xl xl:text-6xl font-semibold">
-					Custom Starter*
+			<section className="flex-1 relative gap-4 flex px-0 lg:px-6 items-center justify-center flex-col chv">
+				<h1 className="sm:text-6xl text-4xl xl:text-7xl font-semibold">
+					C'Starter*
 				</h1>
-				<p className="text-lg text-center max-w-2xl text-muted-foreground">
+				<p className="text-lg sm:text-xl text-center font-light max-w-sm sm:max-w-md  lg:max-w-xl text-muted-foreground">
 					Everything you need to launch your vite app preconfigured,
 					optimized, and ready to go.
 				</p>
@@ -23,6 +23,7 @@ function RouteComponent() {
 					<span>Documentation</span>
 					<ChevronRight className="size-5" />
 				</Button>
+				<div className="w-full h-[40vh] bg-linear-to-b absolute bottom-0 left-0 from-transparent to-background" />
 			</section>
 		</div>
 	);
