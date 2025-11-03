@@ -7,7 +7,7 @@ export default function LoadingButton({
 	children,
 	isLoading,
 	className,
-	...props
+	...rest
 }: ComponentProps<"button"> & {
 	children: ReactNode;
 	isLoading?: boolean;
@@ -17,7 +17,7 @@ export default function LoadingButton({
 		<Button
 			className={cn("min-w-24", className)}
 			disabled={isLoading}
-			{...props}
+			{...rest}
 		>
 			{isLoading ? <Loader className="animate-spin" /> : children}
 		</Button>

@@ -15,11 +15,9 @@ export const useRegister = (): UseMutationResult<
 	return useMutation({
 		mutationFn: postRegister,
 		onError: (_error) => {
-			// Handle error (e.g., show a notification)
 			toast.error("Registration failed");
 		},
 		onSuccess: () => {
-			// Handle success (e.g., show a notification)
 			toast.success("Registration successful");
 		},
 	});

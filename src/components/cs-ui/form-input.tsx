@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import { Field, FieldError, FieldLabel } from "../ui/field";
+import { Input } from "../ui/input";
 import PasswordInput from "./password-input";
-import { Field, FieldError, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
 
 export default function FormInput({
 	name,

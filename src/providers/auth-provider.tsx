@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import { useUser } from "@/api/get-user";
-import CLoader from "@/components/custom-loader";
+import CLoader from "@/components/cs-ui/custom-loader";
 
 const userContext = React.createContext<{ user: any } | null>(null);
 

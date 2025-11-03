@@ -1,9 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useRegister } from "@/api/post-register";
-import FormInput from "@/components/form-input";
-import LoadingButton from "@/components/loading-button";
+import FormInput from "@/components/cs-ui/form-input";
+import LoadingButton from "@/components/cs-ui/loading-button";
 import {
 	Card,
 	CardContent,
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Field, FieldGroup } from "@/components/ui/field";
 import { Form } from "@/components/ui/form";
+import { useRegister } from "@/routes/(auth)/register/-api/post-register";
 
 const formSchema = z
 	.object({

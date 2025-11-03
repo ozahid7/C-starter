@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
 	return (
-		<div className="flex-1 shadow relative flex max-w-7xl bg-soft-background mx-auto w-full flex-col">
+		<div className="flex-1 border border-border/40 flex max-w-7xl bg-soft-background mx-auto w-full flex-col">
 			<NavBar />
 			<section className="flex-1 gap-4 z-10 flex px-0 lg:px-6 flex-col items-center  ">
 				<section className="pt-[10%] pb-[2%] flex flex-col gap-6 items-center">
@@ -30,7 +30,6 @@ function RouteComponent() {
 					</Button>
 				</section>
 			</section>
-			<div className="w-full h-[40vh] bg-linear-to-b absolute bottom-0 left-0 from-transparent to-background" />
 		</div>
 	);
 }

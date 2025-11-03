@@ -1,6 +1,7 @@
-import { MoveLeft } from "lucide-react"
-import { cn } from "../lib/utils"
-import { buttonVariants } from "./ui/button"
+import { Link } from "@tanstack/react-router";
+import { MoveLeft } from "lucide-react";
+import { cn } from "../../lib/utils";
+import { buttonVariants } from "../ui/button";
 import {
 	Card,
 	CardContent,
@@ -8,14 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "./ui/card"
-import { Link } from "@tanstack/react-router"
+} from "../ui/card";
 
 export default function NotFoundPage() {
 	return (
 		<div
 			className={cn(
-				"h-svh flex justify-center  items-center w-screen bg-background text-foreground"
+				"h-svh flex justify-center  items-center w-screen bg-background text-foreground",
 			)}
 		>
 			<Card className="w-lg bg-muted ">
@@ -33,7 +33,7 @@ export default function NotFoundPage() {
 						to="/"
 						className={cn(
 							buttonVariants({ variant: "outline" }),
-							"mx-auto gap-3"
+							"mx-auto gap-3",
 						)}
 					>
 						<MoveLeft />
@@ -42,5 +42,5 @@ export default function NotFoundPage() {
 				</CardFooter>
 			</Card>
 		</div>
-	)
+	);
 }
