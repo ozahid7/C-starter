@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 export default function BreakPoints() {
 	const badgeStyle =
-		"absolute bottom-2 lg:bottom-4 right-2 lg:right-4 bg-foreground text-background chv text-sm  p-4 border-2 border-muted-foreground rounded-full h-full w-full font-semibold";
+		"absolute bottom-0 lg:bottom-2 right-0 lg:right-2 z-10 bg-foreground text-background chv text-sm  p-4 border-2 border-muted-foreground rounded-full h-full w-full font-semibold";
 	if (import.meta.env.PROD) {
 		return null;
 	}
