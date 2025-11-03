@@ -1,7 +1,7 @@
 import { Loader, Search } from "lucide-react";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 
 export default function SearchInput({
 	className,

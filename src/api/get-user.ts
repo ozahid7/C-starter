@@ -9,7 +9,7 @@ type UserDetails = {
 };
 const getUser = async (): Promise<UserDetails> => {
 	const response = await Caxios<UserDetails>("get", "/api/auth/me");
-	return response;
+	return response.data;
 };
 
 export const useUser = (): UseQueryResult<UserDetails, AxiosError> => {

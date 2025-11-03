@@ -1,23 +1,14 @@
-export interface ApiResponse<T> {
+export interface CustomApiResponse<T> {
 	success: boolean;
 	message: string;
 	data: T;
 }
 
-export interface ApiError {
+export interface CustomApiError {
 	error: boolean;
 	errorDetails: {
 		error: string;
 		message: string[];
 		statusCode: number;
-	};
-}
-
-export interface RefreshTokenResponse {
-	success: boolean;
-	message: string;
-	data: {
-		accessToken: string;
-		refreshToken: string;
 	};
 }

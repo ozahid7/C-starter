@@ -21,7 +21,7 @@ export const useLogout = (): UseMutationResult<
 	return useMutation({
 		mutationFn: postLogout,
 		onError: (_error) => {
-			toast.error("Logout failed");
+			toast.error(_error.message);
 		},
 		onSuccess: () => {
 			toast.success("Logout successful");
